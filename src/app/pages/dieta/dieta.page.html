@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Dieta</ion-title>
+    <!--<ion-buttons slot="primary">
+        <ion-button color="primary" (click)="save()"><ion-icon slot="icon-only" name="checkmark"></ion-icon></ion-button>
+    </ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-spinner [hidden]="!data" color="medium" duration="300" name="lines-small"></ion-spinner>
+
+  <ion-segment>
+    <ion-segment-button (ionSelect)="checkDesayuno()">
+      <ion-label color="secondary">Desayuno</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (ionSelect)="checkAlmuerzo()">
+      <ion-label color="primary">Almuerzo</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (ionSelect)="checkMerienda()">
+      <ion-label color="tertiary">Merienda</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list [hidden]="!desayunoCheck">
+
+    <ion-list-header>
+      <ion-label color="secondary">Mi Desayuno:</ion-label>
+      <ion-label color="secondary">{{desayunoCal}} calorías</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of desayuno">
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img
+            src="https://images.vexels.com/media/users/3/185479/isolated/preview/5e7a3e5b334a712e78c5b973e455cb61-desayuno-con-leche-by-vexels.png"
+            alt="" srcset="">
+        </ion-avatar>
+        <ion-label>
+          <h3 class="mayusculas"><b>{{ item.get('nombreAlimento') }}</b></h3>
+        </ion-label>
+        <ion-label>
+          <ion-text color="medium">
+            <p>P:{{ item.get('proteinas') }} |
+              C:{{ item.get('carbohidratos') }} |
+              G:{{ item.get('grasas') }}
+              <p>Peso:{{ item.get('pesoAlimento') }}gr/ml</p>
+              <p>Cal:{{ item.get('calorias') }}kCal</p>
+              <p>{{ item.updatedAt | date:'short'}}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options slide="end">
+        <ion-item-option expandable="true" color="danger" (click)="deleteItem($event, item)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          Eliminar de desayunos
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+  <ion-list [hidden]="!almuerzoCheck">
+
+    <ion-list-header>
+      <ion-label color="primary">Mi Almuerzo:</ion-label>
+      <ion-label color="primary">{{almuerzoCal}} calorías</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of almuerzo">
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://image.flaticon.com/icons/svg/2082/2082045.svg" alt="" srcset="">
+        </ion-avatar>
+        <ion-label>
+          <h3 class="mayusculas"><b>{{ item.get('nombreAlimento') }}</b></h3>
+        </ion-label>
+        <ion-label>
+          <ion-text color="medium">
+            <p>P:{{ item.get('proteinas') }} |
+              C:{{ item.get('carbohidratos') }} |
+              G:{{ item.get('grasas') }}
+              <p>Peso:{{ item.get('pesoAlimento') }}gr/ml</p>
+              <p>Cal:{{ item.get('calorias') }}kCal</p>
+              <p>{{ item.updatedAt | date:'short'}}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options slide="end">
+        <ion-item-option expandable="true" color="danger" (click)="deleteItem($event, item)">          
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          Eliminar de almuerzos
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+  <ion-list [hidden]="!meriendaCheck">
+
+    <ion-list-header>
+      <ion-label color="tertiary">Mi Merienda:</ion-label>
+      <ion-label color="tertiary">{{meriendaCal}} calorías</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of merienda">
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img
+            src="https://previews.123rf.com/images/artant/artant1209/artant120900034/15350858-taza-de-caf%C3%A9-con-croissant.jpg"
+            alt="" srcset="">
+        </ion-avatar>
+        <ion-label>
+          <h3 class="mayusculas"><b>{{ item.get('nombreAlimento') }}</b></h3>
+        </ion-label>
+        <ion-label>
+          <ion-text color="medium">
+            <p>P:{{ item.get('proteinas') }} |
+              C:{{ item.get('carbohidratos') }} |
+              G:{{ item.get('grasas') }}
+              <p>Peso:{{ item.get('pesoAlimento') }}gr/ml</p>
+              <p>Cal:{{ item.get('calorias') }}kCal</p>
+              <p>{{ item.updatedAt | date:'short'}}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options slide="end">
+        <ion-item-option expandable="true" color="danger" (click)="deleteItem($event, item)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+          Eliminar de meriendas
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+  <ion-card class="infoCard">
+    <ion-card-header>
+      <ion-card-subtitle>💡Consumo calórico:</ion-card-subtitle>
+      <ion-card-title>Ingeridas: </ion-card-title>
+      <ion-card-title>Objetivo:</ion-card-title>
+    </ion-card-header>
+
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>COMASANO - RESTAURANTE</ion-card-subtitle>
+      <ion-card-title>¿Te alimentas saludablemente?</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div>
+        <img
+          src="https://static.tuasaude.com/media/article/np/3z/o-que-comer-no-cafe-da-manha-para-emagrecer_16844_l.jpg"
+          alt="" srcset="">
+
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-button shape='round' expand="block" color="tertiary" (click)="loadAlimentos()">ACTUALIZAR DIETA</ion-button>
+</ion-content>

@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="agregarFicha()">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Yo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item-divider>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" size-lg>
+          <ion-label color="primary">Proteínas</ion-label>
+          <ion-progress-bar color="primary" [value]="progressProtein"></ion-progress-bar>
+          <ion-text color="primary">
+            <p>{{proteina}}gr</p>
+          </ion-text>
+          <ion-text [hidden]=lograProtein>
+          <h6>Te faltan:</h6>
+          <p>{{newUser.proteinaRestante}}gr</p>
+        </ion-text>
+        <ion-text color="primary" [hidden]=!lograProtein>
+          <h6>CUMPLIDO</h6>
+        </ion-text>
+        </ion-col>
+
+        <ion-col size="4" size-lg>
+          <ion-label color="medium">Carbohidratos</ion-label>
+          <ion-progress-bar color="medium" [value]="progressCarbos"></ion-progress-bar>
+          <ion-text color="medium">
+            <p>{{carbohidrato}}gr</p>
+          </ion-text>
+          <ion-text [hidden]=lograCarbos>
+          <h6>Te faltan:</h6>
+          <p>{{newUser.carbohidratoRestante}}gr</p>
+        </ion-text>
+          <ion-text color="medium" [hidden]=!lograCarbos>
+            <h6>CUMPLIDO</h6>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="4" size-lg>
+          <ion-label color="success">Grasas</ion-label>
+          <ion-progress-bar color="success" [value]="progressFat"></ion-progress-bar>
+          <ion-text color="success">
+            <p>{{grasa}}gr</p>
+          </ion-text>
+          <ion-text [hidden]=lograFat>
+            <h6>Te faltan:</h6>
+            <p>{{newUser.grasaRestante}}gr</p>
+          </ion-text>
+          <ion-text color="success" [hidden]=!lograFat>
+            <h6>CUMPLIDO</h6>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-item-divider>
+  <hr>
+  <ion-card class="contenidoCard">
+    <ion-card-header>
+      <ion-card-subtitle>Ficha de Datos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+  <ion-list>
+
+
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJZhnZ0S7R6Lf4LCO8HduU-5IaGrkOclmYj0ORjt6T-iI-rB-U">
+        </ion-avatar>
+        <ion-icon name="arrow-back" slot="end"></ion-icon>
+
+        <ion-label>
+          <ion-text color="primary">
+            <p>Usuario {{ item.get('username') }}</p>
+              <p>Edad {{ item.get('edad') }} años</p>
+            <p>Peso: {{ item.get('peso') }} Kg | Altura: {{ item.get('altura') }} cm</p>
+            <hr>
+          </ion-text>
+
+        </ion-label>
+
+      </ion-item>
+               
+      <ion-item-options side="end">
+        <ion-item-option expandable="true" color="tertiary" (click)="agregarFicha()">
+          <ion-icon slot="icon-only" name="refresh"></ion-icon>
+          ACTUALIZAR
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    <ion-text color="medium">
+            <p>Desliza tu ficha para mas opciones </p>
+          </ion-text>
+  </ion-list>
+</ion-card-content>
+</ion-card>
+  <ion-list>
+    <ion-item-sliding>
+
+      <ion-item>
+        <ion-label color="tertiary">
+          <p>Objetivo diario: {{ user.calorias }}Kc</p>
+          <ion-text color="tertiary" [hidden]=lograCal> 
+          <p>Calorìas restantes: {{ newUser.caloriasRestantes }}Kc</p>
+        </ion-text>
+        <ion-text [hidden]=!lograCal>
+          <h6>CUMPLIDO</h6>
+        </ion-text>
+          <ion-progress-bar color="tertiary" [value]="progressCal"></ion-progress-bar>
+        </ion-label>
+
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+  <ion-row>
+    <ion-col size="4">
+      <ion-text [hidden]=lograProtein>
+      <h6>Proteínas</h6>
+    </ion-text>
+      <ion-text color="primary" [hidden]=!lograProtein>
+        <h6>CUMPLIDO</h6>
+      </ion-text>
+      <round-progress [current]="progressProtein" [max]="1" [background]="'#c9c9c9'" [color]="'#3668ff'" [radius]="40"
+        [stroke]="5" [semicircle]="false" [rounded]="false" [clockwise]="true" [responsive]="false" [duration]="3000"
+        [animation]="'easeInOutSine'" [animationDelay]="2000"></round-progress>
+    </ion-col>
+    <ion-col size="4">
+      <ion-text [hidden]=lograCarbos>
+      <h6>Carbos</h6>
+    </ion-text>
+      <ion-text color="medium" [hidden]=!lograCarbos>
+        <h6>CUMPLIDO</h6>
+      </ion-text>
+      <round-progress [current]="progressCarbos" [max]="1" [background]="'#c9c9c9'" [color]="'#636466'" [radius]="40"
+        [stroke]="5" [semicircle]="false" [rounded]="false" [clockwise]="true" [responsive]="false" [duration]="3000"
+        [animation]="'easeInOutSine'" [animationDelay]="3000"></round-progress>
+    </ion-col>
+    <ion-col size="4">
+      <ion-text [hidden]=lograFat>
+      <h6>Grasas</h6>
+    </ion-text>
+      <ion-text color="success" [hidden]=!lograFat>
+        <h6>CUMPLIDO</h6>
+      </ion-text>
+      <round-progress [current]="progressFat" [max]="1" [background]="'#c9c9c9'" [color]="'#57eb63'" [radius]="40"
+        [stroke]="5" [semicircle]="false" [rounded]="false" [clockwise]="true" [responsive]="false" [duration]="3000"
+        [animation]="'easeInOutSine'" [animationDelay]="4000"></round-progress>
+    </ion-col>
+  </ion-row>
+</ion-content>

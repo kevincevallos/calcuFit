@@ -1,0 +1,156 @@
+<ion-header class="header">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="agregarAlimento()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Alimentos</ion-title>
+
+  </ion-toolbar>
+  <!--<ion-searchbar cancel-button-color="black" class="searchbar" [(ngModel)]="searchTerm" (ionChange)="buscar( $event )"
+    color="tertiary" placeholder="Buscar alimento" showCancelButton="focus" animated>
+  </ion-searchbar>-->
+
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-item-divider>
+    <ion-slides [options]="slideOptsOne" #slideWithNav>
+      <ion-slide *ngFor="let item of items">
+        <ion-avatar slot="start">
+          <img src="https://image.flaticon.com/icons/svg/1475/1475906.svg" alt="" srcset="">
+        </ion-avatar>
+        <h6>{{item.get('nombreAlimento')}}</h6>
+
+      </ion-slide>
+    </ion-slides>
+  </ion-item-divider>
+  <mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Alimentos:
+      </mat-expansion-panel-header>
+  
+      <ion-list #mylist>
+
+    <ion-list-header>
+      <ion-label>ALIMENTOS SUGERIDOS:</ion-label>
+
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-spinner [hidden]="data" color="medium" duration="300" name="lines-small"></ion-spinner>
+
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://image.flaticon.com/icons/svg/1475/1475906.svg" alt="" srcset="">
+        </ion-avatar>
+        <!--<ion-label class="labelCloud">
+                    <ion-icon [hidden]="!colab" color="secondary" name="cloud-outline" slot="start"></ion-icon>
+        </ion-label>-->
+        <ion-label>
+          <h3 class="mayusculas"><b>{{ item.get('nombreAlimento') }}</b></h3>
+        </ion-label>          
+
+        <ion-label>
+          <ion-text color="tertiary">
+            <h6>calorías {{ item.get('calorias') }}</h6>
+            <p>proteínas {{ item.get('proteinas') }}</p>
+            <p>carbohidratos {{ item.get('carbohidratos') }}</p>
+            <p>grasas {{ item.get('grasas') }}</p>
+            <p>cantidad {{ item.get('pesoAlimento') }}gr/ml</p>
+          </ion-text>        
+
+        </ion-label>
+
+      </ion-item>
+
+      <ion-item-options slide="end">
+        <ion-item-option color="secondary" (click)="anadirDesayuno($event, item)">+Desayuno</ion-item-option>
+        <ion-item-option color="primary" (click)="anadirAlmuerzo($event, item)">+Almuerzo</ion-item-option>
+        <ion-item-option color="tertiary" (click)="anadirMerienda($event, item)">+Merienda</ion-item-option>
+        <ion-item-option [hidden]="colab" color="white"><ion-icon color="secondary" name="cloud"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+  </ion-list>
+  
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Platos:
+      </mat-expansion-panel-header>
+  
+      <ion-list #mylist>
+
+        <ion-list-header>
+          <ion-label>PLATOS SUGERIDOS:</ion-label>
+    
+        </ion-list-header>
+    
+        <ion-item-sliding *ngFor="let item of platos">
+          <ion-spinner [hidden]="data" color="medium" duration="300" name="lines-small"></ion-spinner>
+    
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="https://image.flaticon.com/icons/svg/1475/1475906.svg" alt="" srcset="">
+            </ion-avatar>
+            <!--<ion-label class="labelCloud">
+                        <ion-icon [hidden]="!colab" color="secondary" name="cloud-outline" slot="start"></ion-icon>
+            </ion-label>-->
+            <ion-label>
+              <h3 class="mayusculas"><b>{{ item.get('nombrePlato') }}</b></h3>
+              <h6>{{ item.get('pesoPlato') }}gr/ml</h6>
+            </ion-label>
+            <ion-label>
+              <ion-text color="tertiary">
+                <h6>proteínas {{ item.get('cantidadProteina') }}</h6>
+                <h6>carbohidratos {{ item.get('cantidadCarbohidrato') }}</h6>
+                <h6>grasas {{ item.get('cantidadGrasa') }}</h6>
+                <h6>calorías {{ item.get('calorias') }}</h6>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+    
+          <ion-item-options slide="end">
+            <ion-item-option color="secondary" (click)="anadirDesayuno($event, item)">+Desayuno</ion-item-option>
+            <ion-item-option color="primary" (click)="anadirAlmuerzo($event, item)">+Almuerzo</ion-item-option>
+            <ion-item-option color="tertiary" (click)="anadirMerienda($event, item)">+Merienda</ion-item-option>
+            <ion-item-option [hidden]="colab" color="white"><ion-icon color="secondary" name="cloud"></ion-icon></ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+    
+    
+      </ion-list>
+  
+    </mat-expansion-panel>
+  
+  </mat-accordion>
+  
+  <ion-card class="infoCard2">
+    <ion-card-header>
+      <ion-card-subtitle class="texto1">
+        Los alimentos con este ìcono <ion-icon color="secondary" name="cloud"></ion-icon>
+ son colaborativos! Disfrùtalos!
+      </ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+  <ion-card class="infoCard">
+    <ion-card-header>
+      <ion-card-subtitle>💡Consumo calórico:</ion-card-subtitle>
+      <ion-card-title>Ingeridas: </ion-card-title>
+      <ion-card-title>Objetivo:</ion-card-title>
+    </ion-card-header>
+
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="agregarFicha()">
+        <ion-icon slot="icon-only" name="fitness"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Calcufit | {{username}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="background">
+  <ion-card class="infoCard">
+    <ion-card-header>
+      <ion-card-title class="title1">Bienvenido a Calcufit</ion-card-title>
+      <ion-card-subtitle class="texto1">🥙En tu dieta aparecerán automáticamente
+                      tus macronutrientes pero primero llena tu ficha..
+                          <ion-icon name="fitness" (click)="agregarFicha()"></ion-icon>
+                      </ion-card-subtitle>
+      <ion-card-subtitle class="texto1">🍔Puedes encontrar la información nutricional de tus
+                         alimento al reverso del empaque</ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+  <ion-card class="infoCard2">
+    <ion-card-header>
+      <ion-card-subtitle class="texto1">
+        Por Favor llena tu ficha responsablemente para que todo cambio tenga un resultado!
+      </ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+  <ion-card class="infoCard3">
+    <ion-card-header>
+      <ion-card-subtitle class="texto1">
+        ¡Añade tus propios alimentos con la información correcta a la base de datos comunitaria!
+      </ion-card-subtitle>
+    </ion-card-header>
+
+  </ion-card>
+  <!--
+  <ion-grid>
+    <ion-text color="tertiary" text-center>
+      <p>You joined the chat as {{ currentUser }}</p>
+    </ion-text>
+    <ion-row *ngFor="let message of messages">
+ 
+      <ion-col size="9" *ngIf="message.user !== currentUser" class="message other-message">
+        <b>{{ message.user }}</b><br>
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'short' }}</div>
+      </ion-col>
+ 
+      <ion-col offset="3" size="9" *ngIf="message.user === currentUser" class="message my-message">
+        <b>{{ message.user }}</b><br>
+        <span>{{ message.msg }}</span>
+        <div class="time" text-right><br>{{ message.createdAt | date:'short' }}</div>
+      </ion-col>
+ 
+    </ion-row>
+  </ion-grid>
+ -->
+
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="datos">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Yo</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="dieta">
+      <ion-icon name="nutrition"></ion-icon>
+      <ion-label>Dieta</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="alimentos">
+      <ion-icon name="restaurant"></ion-icon>
+      <ion-label>Alimentos</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="cog"></ion-icon>
+      <ion-label>Ajustes</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
+</ion-content>
+<!--<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row align-items-center>
+      <ion-col size="10">
+        <ion-textarea auto-grow class="message-input" rows="1" [(ngModel)]="message"></ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="message === ''" class="msg-btn"
+          (click)="sendMessage()">
+          <ion-icon name="ios-send" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>-->

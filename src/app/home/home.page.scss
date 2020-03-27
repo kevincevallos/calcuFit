@@ -1,0 +1,62 @@
+ion-content.background{
+    --background: url(../../assets/images/calcufit3.png) 0 0/100% 95% no-repeat;
+}
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+  }
+   
+  .my-message {
+    background: var(--ion-color-tertiary);
+    color: #fff;
+  }
+   
+  .other-message {
+    background: var(--ion-color-secondary);
+    color: #fff;
+  }
+   
+  .time {
+    color: #dfdfdf;
+    float: right;
+    font-size: small;
+  }
+   
+  .message-input {
+    margin-top: 0px;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    background: #fff;
+  }
+   
+  .msg-btn {
+    --padding-start: 0.5em;
+    --padding-end: 0.5em;
+  }
+  .infoCard{
+    margin-top: 45%;
+    --background: url(../../assets/images/itemsVegetales.jpg) 100%;
+
+    //background-color: rgb(102, 255, 0);
+  }
+  .infoCard2{
+    margin-top: 5%;
+    width: 60%;
+    --background: url(../../assets/images/vegetables2.jpg) 72% 45%;
+    //background-color: rgb(0, 255, 255);
+  }
+  .infoCard3{
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 80%;
+    --background: url(../../assets/images/vegetables2.jpg) 12% 15%;
+    //background-color: rgb(255, 204, 102);
+  }
+  .texto1{
+    color:rgb(0, 0, 0);
+  }
+  .title1{
+    color: rgb(0, 0, 0);
+  }

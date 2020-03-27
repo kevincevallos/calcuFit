@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Regístrate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="center">
+  <app-logo></app-logo>
+  <h1>Calcu-Fit</h1>
+  </div>
+
+      <ion-list>
+        <ion-item>
+            <ion-label floating>Usuario</ion-label>
+            <ion-input [(ngModel)]="username" type='text'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input [(ngModel)]="password" type='password'></ion-input>
+        </ion-item>
+        <ion-item lines='none'>
+          Ya tienes una cuenta?<a routerLink='/login'>Iniciar sesión</a>
+        </ion-item>
+  
+        <ion-button expand="block" shape='round' color='success' (click)="signUp()">Registrarse</ion-button>
+  
+      </ion-list>
+ 
+  </ion-content>

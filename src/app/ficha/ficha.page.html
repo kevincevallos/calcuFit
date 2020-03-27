@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="cerrar()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mi Ficha | {{username}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="infoCard">
+    <ion-card-header>
+      <ion-card-subtitle>💡Consumo calórico:</ion-card-subtitle>
+      <ion-card-title>Ingeridas: </ion-card-title>
+      <ion-card-title>Objetivo:</ion-card-title>
+    </ion-card-header>
+
+
+  </ion-card>
+
+  <ion-card class="contenidoCard">
+    <ion-card-header>
+      <ion-card-subtitle>CALCUFIT - {{username}}</ion-card-subtitle>
+      <ion-card-title>Cálculo de calorías ☻</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div>
+        <ion-grid>
+    <ion-row >
+        <ion-col size="6" size-lg>
+            <ion-label>Peso</ion-label>
+            <ion-input [(ngModel)]="newUser.peso" placeholder="KG" type="number"></ion-input>
+        </ion-col>
+        <ion-col size="6" size-lg>
+             <ion-label>Altura</ion-label>
+             <ion-input  [(ngModel)]="newUser.altura" placeholder="CM" type="number"></ion-input>     
+        </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col size="6" size-lg>
+             <ion-label>Edad</ion-label>
+             <ion-input  [(ngModel)]="newUser.edad" placeholder="AÑOS " type="number"></ion-input>
+        </ion-col>
+        <ion-col size="6" size-lg>
+            <ion-label>Género</ion-label>
+            <ion-select [(ngModel)]="newUser.genero" placeholder="GENERO" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option value="f">Femenino</ion-select-option>
+              <ion-select-option value="m">Masculino</ion-select-option>
+            </ion-select>
+        </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col size="6" size-lg>
+            <ion-label>Actividad</ion-label>
+            <ion-select [(ngModel)]="newUser.actividadDiaria" placeholder="ACTIVIDAD" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option value="0">Poco</ion-select-option>
+              <ion-select-option value="1">Ligero</ion-select-option>
+              <ion-select-option value="2">Moderado</ion-select-option>
+              <ion-select-option value="3">Deportista</ion-select-option>
+              <ion-select-option value="4">Atleta</ion-select-option>
+            </ion-select>
+        </ion-col> 
+        <ion-col size="6" size-lg>
+          <ion-label>Objetivo</ion-label>
+            <ion-select [(ngModel)]="newUser.objetivo" placeholder="OBJETIVO" okText="Aceptar" cancelText="Cancelar">
+              <ion-select-option value="0">Bajar</ion-select-option>
+              <ion-select-option value="1">Mantener</ion-select-option>
+              <ion-select-option value="2">Subir</ion-select-option>
+            </ion-select>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+       
+    </ion-row>
+</ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+ 
+<ion-button  shape="round" [disabled]="isenabled" color=tertiary expand="full" (click)="addUserData()">ACTUALIZAR FICHA</ion-button>
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>COMASANO - RESTAURANTE</ion-card-subtitle>
+    <ion-card-title>¡Piensa en la mejor dieta para ti!</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <div id="contenidoCard">
+      <img
+        src="https://4.bp.blogspot.com/-zicR5TbhBIg/W_lh5wbddhI/AAAAAAAAAOo/H_83MKPYWi4Y8nKt0STjvuos6LK_57GnACEwYBhgL/s1600/Dieta%2Bpara%2Bdefinir.jpg"
+        alt="" srcset="">
+
+    </div>
+  </ion-card-content>
+</ion-card>
+</ion-content>
